@@ -2,7 +2,7 @@
 **Python** ile oluşturduğum basit projeler için bir repository.
 
 
-##matris_carp projesi:
+## matris_carp projesi:
 matriscarp(x,y) fonksiyonunun açıklaması.
 ``` python
 def matriscarp(x,y):
