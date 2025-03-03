@@ -1,1 +1,3 @@
-hi
+# Optimum
+
+temel optimizasyon ile ilgili.
