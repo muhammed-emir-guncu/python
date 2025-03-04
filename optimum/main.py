@@ -28,12 +28,20 @@ def area_filt(f: Callable[[Num], Num], a: list, h: Num) -> list:
     return list(filter(fitrele, l))
 
 
+def ro(x:Num):
+    """yuvarlama"""
+    if int(x) == x:
+        return x
+    else:
+        return int(x) + 1
+
+
 def area(a: Num, b: Num, h: Num) -> list:
     """ bölgeleyici """
     m = abs((a + h) - (b - h))
-    k = m / (2 * h)
-    return [(a + h) + k * i for i in range(int(abs((a - b) / (h * 2))) + 1)]
-
+    k = ro(m / (h * 2))
+    t = m / k
+    return [a + h + (t * i) for i in range(k + 1)]
 
 
 def main() -> None:
@@ -45,7 +53,8 @@ def main() -> None:
     k = area_filt(f, list(range(-4, 4)), 1)
     for i in k:
         print(root(f, i[0] + 1))
-    print(area(1, 5, 2))
+    print(area(0, 7, 3))
+
 
 
 if __name__ == '__main__':
