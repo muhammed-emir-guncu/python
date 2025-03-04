@@ -18,19 +18,21 @@ def root(f: Callable[[Num], Num], a: Num, k: int = 10) -> Num:
     return a
 
 
-def area_filt(f: Callable[[Num], Num], a: list,h: Num) -> list:
+def area_filt(f: Callable[[Num], Num], a: list, h: Num) -> list:
     """verilen alandaki kökleri bulur"""
     def fitrele(x: tuple[Num, Num]) -> bool:
-        return f(x[0])*f(x[1])<0
-    l=[]
+        return f(x[0]) * f(x[1]) < 0
+    l = []
     for i in a:
-        l.append((i-h,i+h))
-    return list(filter(fitrele,l))
+        l.append((i - h, i + h))
+    return list(filter(fitrele, l))
 
 
-#def area(a: Num, b: Num, h: Num) -> list:
-#    """alan döndürür"""
-
+def area(a: Num, b: Num, h: Num) -> list:
+    """ bölgeleyici """
+    m = abs((a + h) - (b - h))
+    k = m / (2 * h)
+    return [(a + h) + k * i for i in range(int(abs((a - b) / (h * 2))) + 1)]
 
 
 
@@ -40,9 +42,10 @@ def main() -> None:
     def f(x: Num) -> Num:
         """basit bir fonksiyon"""
         return x**2 - 4
-    k=area_filt(f,list(range(-4,4)),1)
+    k = area_filt(f, list(range(-4, 4)), 1)
     for i in k:
-        print(root(f,i[0]+1))
+        print(root(f, i[0] + 1))
+    print(area(1, 5, 2))
 
 
 if __name__ == '__main__':
