@@ -6,7 +6,7 @@ d : nümerik türev için
 
 root : newton-raphson yöntemi ile kök bulmak için 
 
-area_filt : verilen listedeki noktaları merkez alan h yarıçaplı yuvarlarda kök olup olmadığı bulmak için
+area_filt : verilen listedeki noktaları merkez alan, h yarıçaplı yuvarların içinde kök olup olmadığını bulmak için
 
 ro : tavan fonksiyonu
 
