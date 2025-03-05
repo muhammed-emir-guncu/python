@@ -37,18 +37,18 @@ kisiler=Kishiler()
 
 dpg.create_context()
 
-with dpg.window(label="ekle", width=600, height=400,pos=(0,0), on_close=dpg.stop_dearpygui):
+with dpg.window(label="ekle", width=600, height=200,pos=(0,0), on_close=dpg.stop_dearpygui):
     dpg.add_input_text(label= "Ad", tag= "isim", pos=(10, 20), width=300, height=20)
     dpg.add_input_text(label= "Soyad", tag= "soyisim", pos=(10, 50), width=300, height=20)
-    dpg.add_button(label="ekle", callback=kisiler.ekle, pos=(10, 80), width=30, height=20)
-    dpg.add_text("-", tag="cikti_ekle", pos=(10, 100))
+    dpg.add_button(label="ekle", callback=kisiler.ekle, pos=(10, 80), width=60, height=40)
+    dpg.add_text("-", tag="cikti_ekle", pos=(100, 100))
 
-with dpg.window(label="gor", width=600,height=400,pos=(600,0),on_close=dpg.stop_dearpygui):
+with dpg.window(label="gor", width=600,height=200,pos=(0,200),on_close=dpg.stop_dearpygui):
     dpg.add_text("-",tag="cikti_gor", pos=(20,20))
     dpg.add_button(label="geri", tag="geri", callback=kisiler.geri,
-                    pos=(20, 50), width=30, height=20)
+                    pos=(20, 50), width=60, height=40)
     dpg.add_button(label="ileri", tag="iler", callback=kisiler.ileri,
-                    pos=(60, 50), width=30, height=20)
+                    pos=(100, 50), width=60, height=40)
 
 
 dpg.create_viewport(title="kisi veritabanı", width=600, height=400)
