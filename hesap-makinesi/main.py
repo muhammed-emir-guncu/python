@@ -41,7 +41,7 @@ hesab=Hesap()
 dpg.create_context()
 
 with dpg.window(label="hesap makinesi", width=600, height=400,pos=(0,0), on_close=dpg.stop_dearpygui):
-    dpg.add_text("-", tag="ekran")
+    dpg.add_text("123", tag="ekran")
     dpg.add_button(label="1",callback=hesab.e_1, pos=(10, 50), width=60, height=20)
     dpg.add_button(label="2",callback=hesab.e_2, pos=(80, 50), width=60, height=20)
     dpg.add_button(label="3",callback=hesab.e_3, pos=(150,50), width=60, height=20)
@@ -60,7 +60,7 @@ with dpg.window(label="hesap makinesi", width=600, height=400,pos=(0,0), on_clos
     dpg.add_button(label="0",callback=hesab.e_0, pos=(10,140), width=130,height=20)
     dpg.add_button(label=".",callback=hesab.nokta, pos=(150,140), width=60,height=20)
 
-dpg.set_frame_callback(1, hesab.goster)
+    dpg.set_frame_callback(1, hesab.goster)
 dpg.create_viewport(title="hesap", width=600, height=400)
 dpg.setup_dearpygui()
 dpg.show_viewport()
