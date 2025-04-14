@@ -19,6 +19,7 @@ class Node:
             case '*': return left * right
             case '/': return 0 if right == 0 else (left / right)
             case '^': return left ** right
+
 class Token:
     """temel tokenları temsil eder, T(değer, tip)."""
     def __init__(self, value, typ):
@@ -34,15 +35,15 @@ def tokenizer(s: str):
 
     i = 0
     while i < len(s):
-        if s[i].isdigit():
-            # Sayılar
-            num = 0
-            while i < len(s) and s[i].isdigit():
-                num = num * 10 + int(s[i])
-                i += 1
-            tok.append(Token(num, "int"))
+        if s[i].isdigit():                          # if s[i].isdigit():
+            # Sayılar"                              #     num=int(s[i])
+            num = 0                                 #     i+=1
+            while i < len(s) and s[i].isdigit():    #     while i < len(s) and s[i].isdigit():
+                num = num * 10 + int(s[i])          #         >>>>>>>
+                i += 1                              #         >>>>>>> bir tane while eksik olsun diye 
+            tok.append(Token(num, "int"))           #         >>>>>>> kod eklemek saçma geldi
 
-        elif s[i] in "+-*/^":
+        elif s[i] in "+-*/^=<>":
             # operatör
             tok.append(Token(s[i], "op"))
             i += 1
@@ -69,23 +70,28 @@ def factor(s):
     else:
         return 0, s  # Geçersiz durumda 0 döndür
 
-def term(s):
-    """Çarpma ve bölme"""
-    res, s = factor(s)
-    while s and s[0].value in "*/":
+def chain(func,to,s):
+    """Toplama ve çıkarma"""
+    res, s = func(s)
+    while s and s[0].value in to:
         op = s[0].value
-        n, s = factor(s[1:])
+        n, s = func(s[1:])
         res = Node(res, op, n)
     return res, s
 
+def power(s):
+    """üssü"""
+    return chain(factor,"^",s)
+
+def term(s):
+    """çarpma bölme"""
+    return chain(power,"*/",s)
+
 def expr(s):
-    """Toplama ve çıkarma"""
-    res, s = term(s)
-    while s and s[0].value in "+-":
-        op = s[0].value
-        n, s = term(s[1:])
-        res = Node(res, op, n)
-    return res, s
+    """toplama çıkarma"""
+    return chain(term,"+-",s)
+
+
 print("'ctrl + z' ile çıkış yapabilirsiniz")
 while True:
     a=input(">>> ")
